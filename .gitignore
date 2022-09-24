@@ -1,32 +1,30 @@
-# Prerequisites
-*.d
+# Adapted from https://github.com/github/gitignore/blob/master/Global/Xcode.gitignore
+# Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+## User settings
+**/xcuserdata/
 
-# Precompiled Headers
-*.gch
-*.pch
+## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
+*.xcscmblueprint
+*.xccheckout
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
+**/build/
+**/DerivedData/
+*.moved-aside
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
 
-# Fortran module files
-*.mod
-*.smod
+## Gcc Patch
+**/*.gcno
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+## obnoxious file that has thumbnails and stuff
+.DS_Store
