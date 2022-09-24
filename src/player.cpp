@@ -18,12 +18,8 @@ void Player::move(){
     {
         sPlayer.setPosition(sPlayer.getPosition().x - 3, sPlayer.getPosition().y);
     }
-    
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-
-    }
-
-    velocity.y += 0.15; //player jump
+    //player ->gravity
+    velocity.y += 0.15;
     sPlayer.setPosition(sPlayer.getPosition().x, sPlayer.getPosition().y + velocity.y);
 }
 

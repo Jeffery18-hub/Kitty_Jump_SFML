@@ -2,6 +2,7 @@
 //Jun Li, Zidong Fan
 //Sep 22, 2022
 
+#include <SFML/Audio.hpp>
 #include "player.hpp"
 #include "trunk.hpp"
 using namespace sf;
@@ -16,6 +17,17 @@ int main()
     Texture t1;
     t1.loadFromFile("background.jpg");
     Sprite sBackground(t1);
+    
+    // load sound
+    sf::Music music;
+    if (!music.openFromFile("bgm.wav"))
+        return -1; // error
+    music.play();
+    music.setLoop(true);
+    sf::SoundBuffer sBuffer;
+        if (!sBuffer.loadFromFile("meow.wav"))
+            return -1;
+    sf::Sound sound(sBuffer);
     
     // create roles
     Player player{};//one player
@@ -43,7 +55,7 @@ int main()
         // player move
         player.move();
         
-        // background moving illusion
+        // loop trunks
         if (player.getPosition().y < 200)
         {
             for (int i = 0; i < 10; ++i)
@@ -62,13 +74,21 @@ int main()
         //Pixel edge detection for player and trunk
         for (int i = 0; i < 10; ++i)
         {
-            if ((player.getPosition().x + 50 > trunks[i].getPosition().x)
-                && (player.getPosition().x + 20 < trunks[i].getPosition().x + 68)
-                && (player.getPosition().y + 70 > trunks[i].getPosition().y)
-                && (player.getPosition().y + 70 < trunks[i].getPosition().y + 14)
-                && (player.getVelocity().y > 0))
+            if ((player.getPosition().x + 80 > trunks[i].getPosition().x)
+                && (player.getPosition().x < trunks[i].getPosition().x + 64)
+                && (player.getPosition().y + 80 > trunks[i].getPosition().y)
+                && (player.getPosition().y + 80 < trunks[i].getPosition().y + 14)
+                && (player.getVelocity().y > 0) && sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
             {
                 player.setVelocity(player.getVelocity().x, -12);
+                sound.play();
+            }
+            else if((player.getPosition().x + 80 > trunks[i].getPosition().x)
+                    && (player.getPosition().x < trunks[i].getPosition().x + 64)
+                    && (player.getPosition().y + 80 > trunks[i].getPosition().y)
+                    && (player.getPosition().y + 80 < trunks[i].getPosition().y + 14)
+                    && (player.getVelocity().y > 0)){
+                player.setVelocity(player.getVelocity().x, -0.5);
             }
         }
 
