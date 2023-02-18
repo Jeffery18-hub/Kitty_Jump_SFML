@@ -1,5 +1,5 @@
 # projectSFML
-CS6010
+
 ![Screen Shot 2022-09-29 at 5 34 35 PM](https://user-images.githubusercontent.com/111780730/193160161-e87581f3-c9e4-4444-9762-a8515b926b3a.png)
 
 # CONTROL
